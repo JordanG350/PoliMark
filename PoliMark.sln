@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliMark.Api", "PoliMark\PoliMark.Api.csproj", "{215128BA-98B6-4B23-B286-B2773B1C0DF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliMark.Core", "PoliMark.core\PoliMark.Core.csproj", "{B3576941-1C91-4506-8F06-5CD9F9BAC190}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliMark.infraestructure", "PoliMark.infrastructure\PoliMark.infraestructure.csproj", "{C500EC06-36F6-4146-9029-600409A21E3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{215128BA-98B6-4B23-B286-B2773B1C0DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215128BA-98B6-4B23-B286-B2773B1C0DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215128BA-98B6-4B23-B286-B2773B1C0DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215128BA-98B6-4B23-B286-B2773B1C0DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3576941-1C91-4506-8F06-5CD9F9BAC190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3576941-1C91-4506-8F06-5CD9F9BAC190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3576941-1C91-4506-8F06-5CD9F9BAC190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3576941-1C91-4506-8F06-5CD9F9BAC190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C500EC06-36F6-4146-9029-600409A21E3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C500EC06-36F6-4146-9029-600409A21E3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C500EC06-36F6-4146-9029-600409A21E3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C500EC06-36F6-4146-9029-600409A21E3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BFC9127F-84E3-48FF-853F-AAC5C40015EC}
+	EndGlobalSection
+EndGlobal
