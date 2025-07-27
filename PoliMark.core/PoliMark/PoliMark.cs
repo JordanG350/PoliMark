@@ -3,6 +3,7 @@ using polimark.core.PoliMark.models;
 using polimark.infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using polimark.infrastructure.Data.models;
+using ZstdSharp.Unsafe;
 
 namespace polimark.core.ConnectionSwagger
 {
@@ -10,27 +11,35 @@ namespace polimark.core.ConnectionSwagger
     {
         private readonly IconnectionSql _db;
         private readonly IConfiguration _config;
-        public PoliMark(IconnectionSql postgresql, IConfiguration configuration)
+        public PoliMark(IconnectionSql connectionSql, IConfiguration configuration)
         {
-            _db = postgresql;
+            _db = connectionSql;
             _config = configuration;
         }
 
-        public async Task<ModelDataProduct> GetProduct(TokenModel data)
+        public async Task<List<ModelDataProduct>> getProducts()
         {
-            ModelDataProduct product = new ModelDataProduct();
-            return product;
+            var ListProducts = await _db.getProducts();
+            return ListProducts.Select(modelo => new ModelDataProduct
+            {
+                tax_id = modelo.tax_id,
+                name = modelo.name,
+                quantity = modelo.quantity
+            }).ToList();
         }
-        public async Task<ModelDataSupplier> GetSupplier(TokenModel data)
+        public async Task<List<ModelDataCustomer>> getCustomers()
         {
-            ModelDataSupplier supplier = new ModelDataSupplier();
-            return supplier;
-        }
-
-        public async Task<ModelDataClient> GetClient(TokenModel data)
-        {
-            ModelDataClient client = new ModelDataClient();
-            return client;
+            var ListCustomers = await _db.getCustomers();
+            return ListCustomers.Select(modelo => new ModelDataCustomer
+            {
+                id = modelo.id,
+                dni = modelo.dni,
+                first_name = modelo.first_name,
+                last_name = modelo.last_name,
+                phone = modelo.phone,
+                email = modelo.email,
+                address = modelo.address
+            }).ToList();
         }
 
     }

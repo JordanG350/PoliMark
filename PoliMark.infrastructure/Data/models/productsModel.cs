@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace polimark.core.ConnectionSwagger.models
+namespace PoliMark.infraestructure.Data.models
 {
-    public class ModelDataProduct
+    public class productsModel
     {
         public int tax_id { get; set; }
         public string name { get; set; }
