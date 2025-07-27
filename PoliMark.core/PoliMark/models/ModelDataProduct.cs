@@ -11,6 +11,5 @@ namespace polimark.core.ConnectionSwagger.models
         public int tax_id { get; set; }
         public string name { get; set; }
         public int quantity { get; set; }
-        public int id_supplier { get; set; }
     }
 }

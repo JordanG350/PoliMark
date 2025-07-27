@@ -39,7 +39,7 @@ namespace polimark.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("Customer")]
+        [Route("Customers")]
         public async Task<ActionResult> customers()
         {
             try

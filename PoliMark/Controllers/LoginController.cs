@@ -16,8 +16,8 @@ namespace polimark.Controllers
 
         //Metodo de autenticacion
         [HttpPost]
-        [Route("GetToken")]
-        public async Task<ActionResult> GetToken(RequestLogin data)
+        [Route("login")]
+        public async Task<ActionResult> login(RequestLogin data)
         {
             try
             {
