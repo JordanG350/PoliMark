@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["maasapp/maasapp.csproj", "maasapp/"]
-RUN dotnet restore "maasapp/maasapp.csproj"
+COPY ["PoliMark/PoliMark.csproj", "PoliMark/"]
+RUN dotnet restore "PoliMark/PoliMark.csproj"
 COPY . .
-WORKDIR "/src/maasapp"
-RUN dotnet build "maasapp.csproj" -c Release -o /app/build
+WORKDIR "/src/PoliMark"
+RUN dotnet build "PoliMark.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "maasapp.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "PoliMark.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "maasapp.dll"]
+ENTRYPOINT ["dotnet", "PoliMark.dll"]

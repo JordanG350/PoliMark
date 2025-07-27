@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace maasapp.core.ConnectionSwagger.models
+namespace polimark.core.ConnectionSwagger.models
 {
     public class ModelDataProduct
     {

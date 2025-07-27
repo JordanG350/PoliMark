@@ -1,11 +1,11 @@
-﻿using maasapp.api.Dependecy;
-using maasapp.infrastructure.Data;
+﻿using polimark.api.Dependecy;
+using polimark.infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
-namespace maasapp.api
+namespace polimark.api
 {
     public class startup
     {
@@ -40,7 +40,7 @@ namespace maasapp.api
             services.AddDataProtection();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Maasapp.api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Polimark.api", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {

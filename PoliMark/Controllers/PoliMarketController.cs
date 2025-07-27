@@ -1,10 +1,10 @@
-using maasapp.core.ConnectionSwagger;
-using maasapp.infrastructure.Data;
-using maasapp.infrastructure.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using polimark.core.ConnectionSwagger;
+using polimark.infrastructure.Data;
+using polimark.infrastructure.Data.models;
 
-namespace maasapp.Controllers
+namespace polimark.Controllers
 {
 
     [ApiController]
@@ -13,11 +13,11 @@ namespace maasapp.Controllers
     public class PoliMarketController : ControllerBase
     {
         // se llama la interface en _db 
-        private readonly IconnectionPostgresql _db;
+        private readonly IconnectionSql _db;
         private readonly IPoliMark _pm;
 
         // constructor igualado a la variable traida de la interface
-        public PoliMarketController(IconnectionPostgresql connectionpostgesql, IPoliMark poliMark)
+        public PoliMarketController(IconnectionSql connectionpostgesql, IPoliMark poliMark)
         {
             _db = connectionpostgesql;
             _pm = poliMark;
@@ -27,7 +27,7 @@ namespace maasapp.Controllers
         [HttpGet]
         [Authorize]
         [Route("products")]
-        public async Task<ActionResult> products(CreationModel data)
+        public async Task<ActionResult> products(TokenModel data)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace maasapp.Controllers
         [HttpGet]
         [Authorize]
         [Route("clients")]
-        public async Task<ActionResult> clients(CreationModel data)
+        public async Task<ActionResult> clients(TokenModel data)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace maasapp.Controllers
         [HttpGet]
         [Authorize]
         [Route("sales")]
-        public async Task<ActionResult> sales(CreationModel data)
+        public async Task<ActionResult> sales(TokenModel data)
         {
             try
             {

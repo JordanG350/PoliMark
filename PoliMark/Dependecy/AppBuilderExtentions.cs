@@ -1,7 +1,7 @@
-﻿using maasapp.api.models;
+﻿using polimark.api.models;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace maasapp.api.Dependecy
+namespace polimark.api.Dependecy
 {
     public static class AppBuilderExtentions
     {

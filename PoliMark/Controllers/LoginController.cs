@@ -1,69 +1,37 @@
-using maasapp.core.ConnectionSwagger;
-using maasapp.infrastructure.Data;
-using maasapp.infrastructure.Data.models;
-using maasapp.infrastructure.Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using PoliMark.Api.models;
+using PoliMark.infraestructure.Service;
 
-namespace maasapp.Controllers
+namespace polimark.Controllers
 {
     [ApiController]
-    // ruta de donde esta el metodo que se llama, en este caso api
-    // [Route("[controller]")]
     public class LoginController : ControllerBase
     {
-        // se llama la interface en _db 
-        private readonly IconnectionPostgresql _db;
-        private readonly IConfiguration _config;
+        private readonly ILoginService _Login;
 
-        // constructor igualado a la variable traida de la interface
-        public LoginController(IconnectionPostgresql connectionpostgesql, IConfiguration configuration)
+        public LoginController(ILoginService loginService)
         {
-            _db = connectionpostgesql;
-            _config = configuration;
+            _Login = loginService;
         }
 
-        //ActionResult Retorna un evento
         //Metodo de autenticacion
         [HttpPost]
         [Route("GetToken")]
-        public async Task<ActionResult> GetToken(TokenModel data)
+        public async Task<ActionResult> GetToken(RequestLogin data)
         {
             try
             {
-                //Crear metodo de verificacion credenciales ---> crear tabla en base de datos de credenciales.
-                string jwtToken = GenerateToken(data);
-                return Ok(new {Token = jwtToken });
+                string User = await _Login.ValidateUser(data.user, data.password);
+                if (User != "No existe el usuario")
+                {
+                    return Ok(new { Token = User });
+                }
+                return Ok(User);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return BadRequest("Algo fallo!" + ex.ToString());
+                return BadRequest("Algo fallo!");
             }
-        }
-
-        private string GenerateToken(TokenModel data) 
-        {
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.Name, data.user),
-                new Claim(ClaimTypes.SerialNumber, data.password)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var securityToken = new JwtSecurityToken(
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
-                signingCredentials: creds);
-
-            string token = new JwtSecurityTokenHandler().WriteToken(securityToken);
-
-            return token;
         }
     }
 }

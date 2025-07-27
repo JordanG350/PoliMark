@@ -1,13 +1,12 @@
-﻿using maasapp.infrastructure.Data;
+﻿using polimark.infrastructure.Data;
 
-namespace maasapp.api.Dependecy
+namespace polimark.api.Dependecy
 {
     public static class dataServiceCollectionExtensions
     {
         public static IServiceCollection AddDataServices(this IServiceCollection services)
         {
-            //dependencia para bases de datos
-            services.AddScoped<IconnectionPostgresql, connectionPostgresql> ();
+            services.AddScoped<IconnectionSql, connectionSql> ();
             return services;
         }
 

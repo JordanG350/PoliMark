@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace maasapp.infrastructure.Data
+namespace polimark.infrastructure.Data
 {
     public class modelData
     {

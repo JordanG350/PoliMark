@@ -1,42 +1,33 @@
-﻿using maasapp.core.ConnectionSwagger.models;
-using maasapp.core.PoliMark.models;
-using maasapp.infrastructure.Data;
-using maasapp.infrastructure.Data.Models;
+﻿using polimark.core.ConnectionSwagger.models;
+using polimark.core.PoliMark.models;
+using polimark.infrastructure.Data;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using polimark.infrastructure.Data.models;
 
-namespace maasapp.core.ConnectionSwagger
+namespace polimark.core.ConnectionSwagger
 {
     public class PoliMark : IPoliMark
     {
-        private readonly IconnectionPostgresql _db;
+        private readonly IconnectionSql _db;
         private readonly IConfiguration _config;
-        public PoliMark(IconnectionPostgresql postgresql, IConfiguration configuration)
+        public PoliMark(IconnectionSql postgresql, IConfiguration configuration)
         {
             _db = postgresql;
             _config = configuration;
         }
 
-        public async Task<ModelDataProduct> GetProduct(CreationModel data)
+        public async Task<ModelDataProduct> GetProduct(TokenModel data)
         {
             ModelDataProduct product = new ModelDataProduct();
             return product;
         }
-        public async Task<ModelDataSupplier> GetSupplier(CreationModel data)
+        public async Task<ModelDataSupplier> GetSupplier(TokenModel data)
         {
             ModelDataSupplier supplier = new ModelDataSupplier();
             return supplier;
         }
 
-        public async Task<ModelDataClient> GetClient(CreationModel data)
+        public async Task<ModelDataClient> GetClient(TokenModel data)
         {
             ModelDataClient client = new ModelDataClient();
             return client;

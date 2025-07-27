@@ -2,7 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using System;
 
-namespace maasapp.api
+namespace polimark.api
 {
     public class Program
     {

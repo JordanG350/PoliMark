@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace maasapp.api.models
+namespace polimark.api.models
 {
     public class ErrorDetails
     {

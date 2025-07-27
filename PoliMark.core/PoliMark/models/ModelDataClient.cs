@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace maasapp.core.PoliMark.models
+namespace polimark.core.PoliMark.models
 {
     public class ModelDataClient
     {
