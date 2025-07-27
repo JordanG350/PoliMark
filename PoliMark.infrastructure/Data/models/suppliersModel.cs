@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace polimark.core.ConnectionSwagger.models
+namespace PoliMark.infraestructure.Data.models
 {
-    public class ModelDataSupplier
+    public class suppliersModel
     {
+        public int id { get; set; }
         public int tax_id { get; set; }
         public string company { get; set; }
         public string phone { get; set; }
