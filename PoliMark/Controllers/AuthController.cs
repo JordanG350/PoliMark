@@ -21,10 +21,10 @@ namespace polimark.Controllers
         {
             try
             {
-                string User = await _Login.ValidateUser(data.user, data.password);
-                if (User != "No existe el usuario")
+                var User = await _Login.ValidateUser(data.username, data.password);
+                if (User.token == null)
                 {
-                    return Ok(new { Token = User });
+                    return Ok("No existe el usuario.");
                 }
                 return Ok(User);
             }

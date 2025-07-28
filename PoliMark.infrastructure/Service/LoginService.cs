@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using polimark.infrastructure.Data;
 using polimark.infrastructure.Data.models;
+using PoliMark.infraestructure.Data.models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,15 +25,20 @@ namespace PoliMark.infraestructure.Service
             _config = configuration;
         }
 
-        public async Task<string> ValidateUser(string user, string password)
+        public async Task<ResponseModelUser> ValidateUser(string user, string password)
         {
-            string result = "No existe el usuario";
+            var usuario = new ResponseModelUser();
+            string token = "";
             var existUser = await _db.getUsers(user, password);
             if (existUser != null)
             {
-                result = GenerateToken(existUser);
+                token = GenerateToken(existUser);
+                usuario.id = existUser.id;
+                usuario.name = existUser.name;
+                usuario.user = existUser.user;
+                usuario.token = token;
             }
-            return result;
+            return usuario;
         }
 
         private string GenerateToken(TokenModel data)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PoliMark.infraestructure.Data.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace PoliMark.infraestructure.Service
 {
     public interface ILoginService
     {
-        Task<string> ValidateUser(string user, string password);
+        Task<ResponseModelUser> ValidateUser(string user, string password);
     }
 }
