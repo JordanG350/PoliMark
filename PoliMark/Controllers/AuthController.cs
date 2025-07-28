@@ -5,18 +5,18 @@ using PoliMark.infraestructure.Service;
 namespace polimark.Controllers
 {
     [ApiController]
-    public class LoginController : ControllerBase
+    [Route("Api/[controller]/[action]")]
+    public class AuthController : ControllerBase
     {
         private readonly ILoginService _Login;
 
-        public LoginController(ILoginService loginService)
+        public AuthController(ILoginService loginService)
         {
             _Login = loginService;
         }
 
         //Metodo de autenticacion
         [HttpPost]
-        [Route("login")]
         public async Task<ActionResult> login(RequestLogin data)
         {
             try

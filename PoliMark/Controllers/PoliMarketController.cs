@@ -1,18 +1,15 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using polimark.core.ConnectionSwagger;
 using polimark.core.ConnectionSwagger.models;
 using polimark.core.PoliMark.models;
-using polimark.infrastructure.Data;
-using polimark.infrastructure.Data.models;
 using PoliMark.Api.models;
-using PoliMark.infraestructure.Data.models;
 
 namespace polimark.Controllers
 {
 
     [ApiController]
+    [Route("Api/[controller]/[action]")]
     public class PoliMarketController : ControllerBase
     {
         private readonly IPoliMark _pm;
@@ -24,7 +21,6 @@ namespace polimark.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("products")]
         public async Task<ActionResult> products()
         {
             try
@@ -39,7 +35,6 @@ namespace polimark.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("Customers")]
         public async Task<ActionResult> customers()
         {
             try
@@ -54,7 +49,6 @@ namespace polimark.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("RegisterProduct")]
         public async Task<ActionResult> RegisterProducts(RegisterProductsModel registerProduct)
         {
             try
@@ -83,7 +77,6 @@ namespace polimark.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("RegisterCustomer")]
         public async Task<ActionResult> RegisterCustomer(RegisterClientModel registerClient)
         {
             try
@@ -108,7 +101,6 @@ namespace polimark.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("MakeSale")]
         public async Task<ActionResult> MakeSale(RequestSale data)
         {
             try
@@ -130,7 +122,6 @@ namespace polimark.Controllers
 
         [HttpPost]
         [Authorize]
-        [Route("BuyProducts")]
         public async Task<ActionResult> BuyProducts(RequestBuyProducts data)
         {
             try
