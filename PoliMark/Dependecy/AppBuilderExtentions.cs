@@ -8,7 +8,7 @@ namespace polimark.api.Dependecy
         public static IApplicationBuilder AddSwaggerColletion(this IApplicationBuilder app) 
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "maassapp.api v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "polimark.api v1"));
             return app;
         }
 
