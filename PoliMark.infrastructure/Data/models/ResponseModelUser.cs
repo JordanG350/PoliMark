@@ -11,7 +11,6 @@ namespace PoliMark.infraestructure.Data.models
         public int id { get; set; }
         public string name { get; set; }
         public string user { get; set; }
-
         public string token { get; set; }
     }
 }
